@@ -22,7 +22,7 @@
     .hero{padding:36px 0}
     .eyebrow{color:var(--accent);font-weight:600;font-size:14px}
     h1{font-size:40px;margin:8px 0 12px}
-    p.lead{color:var(--muted);max-width:600px}
+    p.lead{color:var(--muted);max-width:100%}
 
     .cta-row{display:flex;gap:12px;margin-top:20px;align-items:center;flex-wrap:wrap}
     .btn{background:linear-gradient(90deg,var(--accent),#7c3aed);padding:12px 18px;border-radius:12px;color:white;text-decoration:none;font-weight:600}
@@ -46,7 +46,7 @@
       const t = translations[lang];
       document.getElementById("eyebrow").innerText = t.eyebrow;
       document.getElementById("headline").innerText = t.headline;
-      document.getElementById("lead").innerText = t.lead;
+      document.getElementById("lead").innerText = t;
       document.getElementById("downloadBtn").innerText = t.download;
       document.getElementById("footerText").innerText = t.footer;
 
