@@ -29,10 +29,26 @@
 
     .screenshots-grid{display:flex;gap:16px;margin-top:20px;flex-wrap:wrap}
     .screenshot{width:calc(25% - 12px);height:500px;border-radius:16px;overflow:hidden;border:2px solid rgba(255,255,255,0.06)}
-    .screenshot img{width:100%;height:100%;object-fit:cover}
+    .screenshot img{width:100%;height:100%;object-fit:cover;cursor:pointer}
     @media(max-width:768px){.screenshot{width:48%;height:420px}}
 
     footer{padding:36px 0;color:var(--muted);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+
+    /* Lightbox styles */
+    #lightbox {
+      display:none;
+      position:fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      background:rgba(0,0,0,0.9);
+      justify-content:center; align-items:center;
+      z-index:1000;
+    }
+    #lightbox img {
+      max-width:90%;
+      max-height:90%;
+      border-radius:12px;
+    }
   </style>
 
   <script>
@@ -46,13 +62,28 @@
       const t = translations[lang];
       document.getElementById("eyebrow").innerText = t.eyebrow;
       document.getElementById("headline").innerText = t.headline;
-      document.getElementById("lead").innerText = t;
+      document.getElementById("lead").innerText = t.lead;
       document.getElementById("downloadBtn").innerText = t.download;
       document.getElementById("footerText").innerText = t.footer;
 
       document.querySelectorAll('.screenshot').forEach(el=>el.style.display='none');
       document.querySelectorAll('.lang-'+lang).forEach(el=>el.style.display='block');
     }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.screenshot img').forEach(img => {
+        img.addEventListener('click', () => {
+          const lightbox = document.getElementById('lightbox');
+          const lightboxImg = document.getElementById('lightbox-img');
+          lightboxImg.src = img.src;
+          lightbox.style.display = 'flex';
+        });
+      });
+
+      document.getElementById('lightbox').addEventListener('click', () => {
+        document.getElementById('lightbox').style.display = 'none';
+      });
+    });
   </script>
 </head>
 <body onload="setLanguage('en')">
@@ -112,7 +143,6 @@
           <div class="screenshot lang-fr" style="display:none"><img src="assets/SC_FR_4.png" alt="Screenshot FR 4"></div>
         </div>
       </section>
-
     </main>
 
     <footer>
@@ -121,6 +151,11 @@
         <a href="https://angelbayro.github.io/SubtrackerDoc/privacyPolicy.html" class="muted" style="margin-right:14px">Privacy</a>
       </div>
     </footer>
+  </div>
+
+  <!-- Lightbox modal -->
+  <div id="lightbox">
+    <img id="lightbox-img" src="">
   </div>
 </body>
 </html>
