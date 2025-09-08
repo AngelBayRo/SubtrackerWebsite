@@ -6,13 +6,6 @@
   <title>SubTracker — Simple, fast iOS app</title>
   <meta name="description" content="Controla, organiza y recibe alertas de tus suscripciones (incluso personalizables) en un solo lugar. Fácil, seguro y sin complicaciones. ¡Gestiona con Subtracker hoy!" />
 
-  <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="SubTracker" />
-  <meta property="og:description" content="Controla, organiza y recibe alertas de tus suscripciones (incluso personalizables) en un solo lugar. Fácil, seguro y sin complicaciones. ¡Gestiona con Subtracker hoy!" />
-  <meta property="og:image" content="{{OG_IMAGE_URL}}" />
-  <meta property="og:url" content="https://apps.apple.com/es/app/subtracker/id6749389469" />
-  <meta name="twitter:card" content="summary_large_image" />
-
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -34,15 +27,10 @@
     .cta-row{display:flex;gap:12px;margin-top:20px;align-items:center;flex-wrap:wrap}
     .btn{background:linear-gradient(90deg,var(--accent),#7c3aed);padding:12px 18px;border-radius:12px;color:white;text-decoration:none;font-weight:600}
 
-    /* Carousel */
-    .carousel-wrapper{position:relative;overflow:hidden;margin-top:20px}
-    .carousel{display:flex;transition:transform 0.4s ease}
-    .screenshot{min-width:240px;height:500px;margin-right:16px;border-radius:16px;overflow:hidden;border:2px solid rgba(255,255,255,0.06)}
+    .screenshots-grid{display:flex;gap:16px;margin-top:20px;flex-wrap:wrap}
+    .screenshot{width:calc(25% - 12px);height:500px;border-radius:16px;overflow:hidden;border:2px solid rgba(255,255,255,0.06)}
     .screenshot img{width:100%;height:100%;object-fit:cover}
-    .carousel-controls{display:flex;justify-content:space-between;margin-top:10px}
-    .carousel-btn{background:var(--glass);border:none;color:white;font-size:20px;padding:10px;border-radius:50%;cursor:pointer}
-    .carousel-btn:hover{background:rgba(255,255,255,0.1)}
-    @media(max-width:768px){.screenshot{min-width:200px;height:420px}}
+    @media(max-width:768px){.screenshot{width:48%;height:420px}}
 
     footer{padding:36px 0;color:var(--muted);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
   </style>
@@ -54,28 +42,16 @@
       fr:{eyebrow:"Nouveau sur l'App Store",headline:"SubTracker — Gérez vos abonnements facilement",lead:"Contrôlez, organisez et recevez des alertes pour vos abonnements (même personnalisables) en un seul endroit. Simple, sécurisé et sans tracas.",download:"Télécharger sur l'App Store",footer:"Tous droits réservés."}
     };
 
-    let currentSlide=0;
-    function moveCarousel(direction){
-      const carousel=document.getElementById("carousel");
-      const screenshots=carousel.querySelectorAll(".screenshot:not([style*='display: none'])");
-      const totalSlides=screenshots.length;
-      currentSlide=(currentSlide+direction+totalSlides)%totalSlides;
-      const offset=-currentSlide*(screenshots[0].offsetWidth+16);
-      carousel.style.transform=`translateX(${offset}px)`;
-    }
-
     function setLanguage(lang){
-      const t=translations[lang];
-      document.getElementById("eyebrow").innerText=t.eyebrow;
-      document.getElementById("headline").innerText=t.headline;
-      document.getElementById("lead").innerText=t.lead;
-      document.getElementById("downloadBtn").innerText=t.download;
-      document.getElementById("footerText").innerText=t.footer;
+      const t = translations[lang];
+      document.getElementById("eyebrow").innerText = t.eyebrow;
+      document.getElementById("headline").innerText = t.headline;
+      document.getElementById("lead").innerText = t.lead;
+      document.getElementById("downloadBtn").innerText = t.download;
+      document.getElementById("footerText").innerText = t.footer;
 
       document.querySelectorAll('.screenshot').forEach(el=>el.style.display='none');
       document.querySelectorAll('.lang-'+lang).forEach(el=>el.style.display='block');
-      currentSlide=0;
-      moveCarousel(0);
     }
   </script>
 </head>
@@ -116,30 +92,24 @@
 
       <section id="screens">
         <h2 id="screenshotsTitle">Screenshots</h2>
-        <div class="carousel-wrapper">
-          <div class="carousel" id="carousel">
-            <!-- Inglés -->
-            <div class="screenshot lang-en"><img src="assets/SC_EN_1.png" alt="Screenshot EN 1"></div>
-            <div class="screenshot lang-en"><img src="assets/SC_EN_2.png" alt="Screenshot EN 2"></div>
-            <div class="screenshot lang-en"><img src="assets/SC_EN_3.png" alt="Screenshot EN 3"></div>
-            <div class="screenshot lang-en"><img src="assets/SC_EN_4.png" alt="Screenshot EN 4"></div>
+        <div class="screenshots-grid">
+          <!-- Inglés -->
+          <div class="screenshot lang-en"><img src="assets/SC_EN_1.png" alt="Screenshot EN 1"></div>
+          <div class="screenshot lang-en"><img src="assets/SC_EN_2.png" alt="Screenshot EN 2"></div>
+          <div class="screenshot lang-en"><img src="assets/SC_EN_3.png" alt="Screenshot EN 3"></div>
+          <div class="screenshot lang-en"><img src="assets/SC_EN_4.png" alt="Screenshot EN 4"></div>
 
-            <!-- Español -->
-            <div class="screenshot lang-es" style="display:none"><img src="assets/SC_ES_1.png" alt="Screenshot ES 1"></div>
-            <div class="screenshot lang-es" style="display:none"><img src="assets/SC_ES_2.png" alt="Screenshot ES 2"></div>
-            <div class="screenshot lang-es" style="display:none"><img src="assets/SC_ES_3.png" alt="Screenshot ES 3"></div>
-            <div class="screenshot lang-es" style="display:none"><img src="assets/SC_ES_4.png" alt="Screenshot ES 4"></div>
+          <!-- Español -->
+          <div class="screenshot lang-es" style="display:none"><img src="assets/SC_ES_1.png" alt="Screenshot ES 1"></div>
+          <div class="screenshot lang-es" style="display:none"><img src="assets/SC_ES_2.png" alt="Screenshot ES 2"></div>
+          <div class="screenshot lang-es" style="display:none"><img src="assets/SC_ES_3.png" alt="Screenshot ES 3"></div>
+          <div class="screenshot lang-es" style="display:none"><img src="assets/SC_ES_4.png" alt="Screenshot ES 4"></div>
 
-            <!-- Francés -->
-            <div class="screenshot lang-fr" style="display:none"><img src="assets/SC_FR_1.png" alt="Screenshot FR 1"></div>
-            <div class="screenshot lang-fr" style="display:none"><img src="assets/SC_FR_2.png" alt="Screenshot FR 2"></div>
-            <div class="screenshot lang-fr" style="display:none"><img src="assets/SC_FR_3.png" alt="Screenshot FR 3"></div>
-            <div class="screenshot lang-fr" style="display:none"><img src="assets/SC_FR_4.png" alt="Screenshot FR 4"></div>
-          </div>
-        </div>
-        <div class="carousel-controls">
-          <button class="carousel-btn" onclick="moveCarousel(-1)">❮</button>
-          <button class="carousel-btn" onclick="moveCarousel(1)">❯</button>
+          <!-- Francés -->
+          <div class="screenshot lang-fr" style="display:none"><img src="assets/SC_FR_1.png" alt="Screenshot FR 1"></div>
+          <div class="screenshot lang-fr" style="display:none"><img src="assets/SC_FR_2.png" alt="Screenshot FR 2"></div>
+          <div class="screenshot lang-fr" style="display:none"><img src="assets/SC_FR_3.png" alt="Screenshot FR 3"></div>
+          <div class="screenshot lang-fr" style="display:none"><img src="assets/SC_FR_4.png" alt="Screenshot FR 4"></div>
         </div>
       </section>
 
