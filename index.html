@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SubTracker — Simple, fast iOS app</title>
+  <meta name="description" content="Controla, organiza y recibe alertas de tus suscripciones (incluso personalizables) en un solo lugar. Fácil, seguro y sin complicaciones. ¡Gestiona con Subtracker hoy!" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="SubTracker" />
+  <meta property="og:description" content="Controla, organiza y recibe alertas de tus suscripciones (incluso personalizables) en un solo lugar. Fácil, seguro y sin complicaciones. ¡Gestiona con Subtracker hoy!" />
+  <meta property="og:image" content="{{OG_IMAGE_URL}}" />
+  <meta property="og:url" content="https://apps.apple.com/es/app/subtracker/id6749389469" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{--accent:#2563eb;--bg:#0f172a;--card:#0b1220;--muted:#94a3b8;--glass:rgba(255,255,255,0.03)}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;background:linear-gradient(180deg,#0b1220 0%, #071026 100%);color:#e6eef8;line-height:1.5}
+    .container{max-width:1100px;margin:0 auto;padding:48px 20px}
+    header{display:flex;align-items:center;justify-content:space-between;padding-bottom:24px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:52px;height:52px;border-radius:12px;background:var(--glass);display:flex;align-items:center;justify-content:center;font-weight:700}
+    nav a{color:var(--muted);margin-left:18px;text-decoration:none}
+
+    .hero{display:grid;grid-template-columns:1fr;gap:32px;align-items:center;padding:36px 0}
+    .eyebrow{color:var(--accent);font-weight:600;font-size:14px}
+    h1{font-size:40px;margin:8px 0 12px}
+    p.lead{color:var(--muted);max-width:600px}
+
+    .cta-row{display:flex;gap:12px;margin-top:20px;align-items:center}
+    .btn{background:linear-gradient(90deg,var(--accent),#7c3aed);padding:12px 18px;border-radius:12px;color:white;text-decoration:none;font-weight:600}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:14px}
+    .card h3{margin:0 0 8px}
+    .muted{color:var(--muted);font-size:15px}
+
+    .screens{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;align-items:flex-start}
+    .screenshot{width:220px;height:480px;border-radius:16px;overflow:hidden;border:2px solid rgba(255,255,255,0.03);flex:0 0 auto}
+    .screenshot img{width:100%;height:100%;object-fit:cover}
+
+    footer{padding:36px 0;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+
+    @media (max-width:980px){.features{grid-template-columns:1fr 1fr}.screens{overflow:auto}} 
+    @media (max-width:560px){.features{grid-template-columns:1fr}.logo{width:44px;height:44px}.container{padding:28px 16px}h1{font-size:28px} .screenshot{width:160px;height:360px}}
+  </style>
+
+  <script>
+    const translations = {
+      en: {
+        eyebrow: "New on the App Store",
+        headline: "SubTracker — Track and manage your subscriptions effortlessly",
+        lead: "Control, organize and get alerts for your subscriptions (even customizable) all in one place. Easy, secure, and hassle-free.",
+        features: ["Fast & Lightweight","Secure","Beautiful UI"],
+        featuresDesc: [
+          "Minimal footprint, optimized for iOS and modern devices.",
+          "Built-in encryption and privacy-first defaults.",
+          "Clean components and delightful interactions."
+        ],
+        screenshots: "Screenshots",
+        download: "Download on the App Store",
+        downloadDesc: "Control, organize and get alerts for your subscriptions all in one place. Easy, secure, and hassle-free. Manage with SubTracker today!",
+        contact: "Contact",
+        brandSub: "Track your subscriptions",
+        privacy: "Privacy",
+        terms: "Terms",
+        copyright: "© 2025 SubTracker. All rights reserved.",
+        seeScreens: "See screenshots"
+      },
+      es: {
+        eyebrow: "Nuevo en la App Store",
+        headline: "SubTracker — Controla y organiza tus suscripciones fácilmente",
+        lead: "Controla, organiza y recibe alertas de tus suscripciones (incluso personalizables) en un solo lugar. Fácil, seguro y sin complicaciones.",
+        features: ["Rápido y ligero","Seguro","Interfaz atractiva"],
+        featuresDesc: [
+          "Huella mínima, optimizado para iOS y dispositivos modernos.",
+          "Cifrado incorporado y configuración con privacidad por defecto.",
+          "Componentes limpios e interacciones agradables."
+        ],
+        screenshots: "Capturas de pantalla",
+        download: "Descargar en la App Store",
+        downloadDesc: "Controla, organiza y recibe alertas de tus suscripciones en un solo lugar. Fácil, seguro y sin complicaciones. ¡Gestiona con SubTracker hoy!",
+        contact: "Contacto",
+        brandSub: "Gestiona tus suscripciones",
+        privacy: "Privacidad",
+        terms: "Términos",
+        copyright: "© 2025 SubTracker. Todos los derechos reservados.",
+        seeScreens: "Ver capturas"
+      },
+      fr: {
+        eyebrow: "Nouveau sur l'App Store",
+        headline: "SubTracker — Gérez vos abonnements facilement",
+        lead: "Contrôlez, organisez et recevez des alertes pour vos abonnements (même personnalisables) en un seul endroit. Simple, sécurisé et sans tracas.",
+        features: ["Rapide et léger","Sécurisé","Interface élégante"],
+        featuresDesc: [
+          "Empreinte minimale, optimisé pour iOS et les appareils modernes.",
+          "Chiffrement intégré et confidentialité par défaut.",
+          "Composants épurés et interactions agréables."
+        ],
+        screenshots: "Captures d'écran",
+        download: "Télécharger sur l'App Store",
+        downloadDesc: "Contrôlez, organisez et recevez des alertes pour vos abonnements en un seul endroit. Simple, sécurisé et sans tracas. Gérez avec SubTracker dès aujourd'hui !",
+        contact: "Contact",
+        brandSub: "Gérez vos abonnements",
+        privacy: "Confidentialité",
+        terms: "Conditions",
+        copyright: "© 2025 SubTracker. Tous droits réservés.",
+        seeScreens: "Voir les captures"
+      }
+    };
+
+    function setLanguage(lang) {
+      const t = translations[lang] || translations.en;
+
+      // Texts
+      document.getElementById("eyebrow").innerText = t.eyebrow;
+      document.getElementById("headline").innerText = t.headline;
+      document.getElementById("lead").innerText = t.lead;
+      document.getElementById("feature1").innerText = t.features[0];
+      document.getElementById("feature1desc").innerText = t.featuresDesc[0];
+      document.getElementById("feature2").innerText = t.features[1];
+      document.getElementById("feature2desc").innerText = t.featuresDesc[1];
+      document.getElementById("feature3").innerText = t.features[2];
+      document.getElementById("feature3desc").innerText = t.featuresDesc[2];
+      document.getElementById("screenshotsTitle").innerText = t.screenshots;
+      document.getElementById("downloadBtn").innerText = t.download;
+      document.getElementById("downloadBtnFooter").innerText = t.download;
+      document.getElementById("downloadDesc").innerText = t.downloadDesc;
+      document.getElementById("contactLink").innerText = t.contact;
+      document.getElementById("brandSub").innerText = t.brandSub;
+      document.getElementById("privacyLink").innerText = t.privacy;
+      document.getElementById("termsLink").innerText = t.terms;
+      document.getElementById("copyrightText").innerText = t.copyright;
+      document.getElementById("seeScreensBtn").innerText = t.seeScreens;
+
+      // Toggle screenshots (show only the selected-language screenshot sets)
+      document.querySelectorAll('.en-only').forEach(el => el.style.display = (lang === 'en') ? 'block' : 'none');
+      document.querySelectorAll('.es-only').forEach(el => el.style.display = (lang === 'es') ? 'block' : 'none');
+      document.querySelectorAll('.fr-only').forEach(el => el.style.display = (lang === 'fr') ? 'block' : 'none');
+
+      // set active option in select (if select exists)
+      const sel = document.getElementById('langSelect');
+      if (sel) sel.value = lang;
+    }
+  </script>
+</head>
+<body onload="setLanguage('en')">
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">S</div>
+        <div>
+          <div style="font-weight:700">SubTracker</div>
+          <div class="muted" id="brandSub" style="font-size:13px">Track your subscriptions</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#features">Features</a>
+        <a href="#screens">Screens</a>
+        <a href="#download">Download</a>
+        <select id="langSelect" onchange="setLanguage(this.value)">
+          <option value="en">EN</option>
+          <option value="es">ES</option>
+          <option value="fr">FR</option>
+        </select>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <div class="eyebrow" id="eyebrow">New on the App Store</div>
+          <h1 id="headline">SubTracker — Track and manage your subscriptions effortlessly</h1>
+          <p class="lead" id="lead">Control, organize and get alerts for your subscriptions (even customizable) all in one place. Easy, secure, and hassle-free.</p>
+
+          <div class="cta-row">
+            <a class="btn" id="downloadBtn" href="https://apps.apple.com/es/app/subtracker/id6749389469" target="_blank" rel="noopener noreferrer">
+              Download on the App Store
+            </a>
+            <a class="btn ghost" id="seeScreensBtn" href="#screens">See screenshots</a>
+            <a class="muted" id="contactLink" style="margin-left:auto;font-size:13px" href="mailto:hello@yourdomain.com">Contact</a>
+          </div>
+
+          <!-- Screenshots area: one set per language. Replace placeholders with your files. -->
+          <div class="screens" style="margin-top:26px">
+            <!-- English screenshots -->
+            <div class="screenshot en-only"><img src="{{SCREENSHOT_EN_1}}" alt="Screenshot 1 EN"></div>
+            <div class="screenshot en-only"><img src="{{SCREENSHOT_EN_2}}" alt="Screenshot 2 EN"></div>
+            <div class="screenshot en-only"><img src="{{SCREENSHOT_EN_3}}" alt="Screenshot 3 EN"></div>
+
+            <!-- Spanish screenshots -->
+            <div class="screenshot es-only" style="display:none"><img src="{{SCREENSHOT_ES_1}}" alt="Screenshot 1 ES"></div>
+            <div class="screenshot es-only" style="display:none"><img src="{{SCREENSHOT_ES_2}}" alt="Screenshot 2 ES"></div>
+            <div class="screenshot es-only" style="display:none"><img src="{{SCREENSHOT_ES_3}}" alt="Screenshot 3 ES"></div>
+
+            <!-- French screenshots -->
+            <div class="screenshot fr-only" style="display:none"><img src="{{SCREENSHOT_FR_1}}" alt="Screenshot 1 FR"></div>
+            <div class="screenshot fr-only" style="display:none"><img src="{{SCREENSHOT_FR_2}}" alt="Screenshot 2 FR"></div>
+            <div class="screenshot fr-only" style="display:none"><img src="{{SCREENSHOT_FR_3}}" alt="Screenshot 3 FR"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" style="margin-top:36px">
+        <div class="features">
+          <div class="card">
+            <h3 id="feature1">Fast & Lightweight</h3>
+            <div class="muted" id="feature1desc">Minimal footprint, optimized for iOS and modern devices.</div>
+          </div>
+          <div class="card">
+            <h3 id="feature2">Secure</h3>
+            <div class="muted" id="feature2desc">Built-in encryption and privacy-first defaults.</div>
+          </div>
+          <div class="card">
+            <h3 id="feature3">Beautiful UI</h3>
+            <div class="muted" id="feature3desc">Clean components and delightful interactions.</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="screens">
+        <h2 style="margin-top:36px" id="screenshotsTitle">Screenshots</h2>
+        <p class="muted">Replace these with your own images in /assets/.</p>
+        <div class="screens" style="margin-top:12px">
+          <div class="screenshot en-only"><img src="{{SCREENSHOT_EN_1}}" alt="Screenshot 1 EN"></div>
+          <div class="screenshot en-only"><img src="{{SCREENSHOT_EN_2}}" alt="Screenshot 2 EN"></div>
+          <div class="screenshot en-only"><img src="{{SCREENSHOT_EN_3}}" alt="Screenshot 3 EN"></div>
+
+          <div class="screenshot es-only" style="display:none"><img src="{{SCREENSHOT_ES_1}}" alt="Screenshot 1 ES"></div>
+          <div class="screenshot es-only" style="display:none"><img src="{{SCREENSHOT_ES_2}}" alt="Screenshot 2 ES"></div>
+          <div class="screenshot es-only" style="display:none"><img src="{{SCREENSHOT_ES_3}}" alt="Screenshot 3 ES"></div>
+
+          <div class="screenshot fr-only" style="display:none"><img src="{{SCREENSHOT_FR_1}}" alt="Screenshot 1 FR"></div>
+          <div class="screenshot fr-only" style="display:none"><img src="{{SCREENSHOT_FR_2}}" alt="Screenshot 2 FR"></div>
+          <div class="screenshot fr-only" style="display:none"><img src="{{SCREENSHOT_FR_3}}" alt="Screenshot 3 FR"></div>
+        </div>
+      </section>
+
+      <section id="download" style="margin-top:42px">
+        <div class="card" style="display:flex;align-items:center;gap:18px">
+          <div style="width:84px;height:84px;border-radius:18px;background:var(--glass);display:flex;align-items:center;justify-content:center;font-weight:700">S</div>
+          <div>
+            <div style="font-weight:700">SubTracker</div>
+            <div class="muted" id="downloadDesc">Controla, organiza y recibe alertas de tus suscripciones...</div>
+            <div style="margin-top:12px">
+              <a class="btn" id="downloadBtnFooter" href="https://apps.apple.com/es/app/subtracker/id6749389469">Download on the App Store</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div id="copyrightText">© 2025 SubTracker. All rights reserved.</div>
+      <div>
+        <a href="https://angelbayro.github.io/SubtrackerDoc/privacyPolicy.html" id="privacyLink" class="muted" style="margin-right:14px">Privacy</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
